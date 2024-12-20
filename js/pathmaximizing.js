@@ -370,6 +370,10 @@ function onMapSizeChanged() {
     let oldMapSize = mapSize;
     saveGameState();
     mapSize = Number(document.getElementById("mapsize").value);
+    if (mapSize == 0) {
+        document.getElementById("mapsize").value = 1;
+        mapSize = 1;
+    }
     if (BEST_KNOWN_SCORES[`level${mapSize}`] == null) {
         document.getElementById("loadglobalbest").disabled = true;
     } else {
