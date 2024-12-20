@@ -374,6 +374,10 @@ function onMapSizeChanged() {
         document.getElementById("mapsize").value = 1;
         mapSize = 1;
     }
+    if (mapSize > 128) {
+        document.getElementById("mapsize").value = 128;
+        mapSize = 128;
+    }
     if (BEST_KNOWN_SCORES[`level${mapSize}`] == null) {
         document.getElementById("loadglobalbest").disabled = true;
     } else {
