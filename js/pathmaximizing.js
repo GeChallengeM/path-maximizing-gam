@@ -161,7 +161,7 @@ function loadPersonalBest() {
 
 function loadGlobalBest() {
     if (personalBest < BEST_KNOWN_SCORES[`level${mapSize}`].map.personalBest) {
-        response = confirm("Are you sure you want to see the solution? It may be more fun finding it yourself.")
+        response = confirm("Are you sure you want to see the global best score? It may be more fun finding it yourself.")
         if (response) {
             currentMap = BEST_KNOWN_SCORES[`level${mapSize}`].map.currentMap;
             calcPath();
