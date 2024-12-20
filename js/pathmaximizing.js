@@ -371,8 +371,8 @@ function onMapSizeChanged() {
     saveGameState();
     mapSize = Number(document.getElementById("mapsize").value);
     if (mapSize == 0) {
-        document.getElementById("mapsize").value = 1;
-        mapSize = 1;
+        mapSize = oldMapSize;
+        return;
     }
     if (mapSize > 128) {
         document.getElementById("mapsize").value = 128;
