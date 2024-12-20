@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Maximizing</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="js/pathmaximizing.js"></script>
+</head>
+<body onload="start()">
+    <header>
+        <h1>Maximize the Number of "Green Tiles"!</h1>
+        <p>Maximize the number of same-distance shortest paths from the middle tile towards other tiles, for a distance of your choice. Click on the map to place movement-blocking obstacles.</p>
+    </header>
+
+    <main>
+        <div class="settings">
+            <label for="mapsize" style="font-size: 1.1rem">Map size:</label>
+            <input type="number" id="mapsize" min="1" max="128" value="7" oninput="onMapSizeChanged()" style="font-size: 1.1rem">
+        </div>
+
+        <div class="container">
+            <div class="controls-wrapper">
+                <section id="controls">
+                    <button onclick="increaseSize()" class="smallbutton">Increase Size</button>
+                    <button onclick="decreaseSize()" class="smallbutton">Decrease Size</button>
+                    <hr class="button-divider">
+                    <button onclick="importGameState()" class="smallbutton">Import Obstacles Map</button>
+                    <button onclick="exportGameState()" class="smallbutton">Export Obstacles Map</button>
+                    <hr class="button-divider">
+                    <button onclick="loadPersonalBest()" class="smallbutton">Load Personal Best</button>
+                    <button onclick="loadGlobalBest()" class="smallbutton" disabled id="loadglobalbest">Load Global Best</button>
+                    <hr class="button-divider">
+                    <button onclick="clearMap()" class="smallbutton">Clear Map</button>
+                </section>
+            </div>
+
+            <section id="canvas-container">
+                <canvas id="canvas"></canvas>
+                <section id="score">
+                    <h3 id="currentscore">Current score: 110 - 42.97%</h3>
+                    <h3 id="personalbestscore">Personal best score: 110 - 42.97%</h3>
+                    <h3 id="globalbestscore">Global best score: 110 - 42.97% (first obtained by Gech)</h3>
+                </section>
+            </section>
+
+            <section id="options">
+                <div class="option">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="symmetricplacement" oninput="saveOptions()">
+                    </div>
+                    <div class="label-wrapper">
+                        <label for="symmetricplacement">Add/remove multiple obstacles symmetrically on the map in a single click.</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="cantogglefullblocking" oninput="saveOptions()">
+                    </div>
+                    <div class="label-wrapper">
+                        <label for="cantogglefullblocking">Enable adding/removing fully blocking tiles.</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="overwritepersonalbestscoreontie" oninput="saveOptions(); updatePersonalBest()">
+                    </div>
+                    <div class="label-wrapper">
+                        <label for="overwritepersonalbestscoreontie">Overwrite personal best score on a tie.</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="displaymostcommontilesgreen" oninput="saveOptions(); drawAll()">
+                    </div>
+                    <div class="label-wrapper">
+                        <label for="displaymostcommontilesgreen">Display best-scoring tiles in green.</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="displaypathcolorgradient" oninput="saveOptions(); drawAll()">
+                    </div>
+                    <div class="label-wrapper">
+                        <label for="displaypathcolorgradient">Show color gradient for shortest path distance.</label>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="displayshortestpathsgraph" oninput="saveOptions(); drawAll()">
+                    </div>
+                    <div class="label-wrapper">
+                        <label for="displayshortestpathsgraph">Show shortest paths graph.</label>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
