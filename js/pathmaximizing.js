@@ -143,11 +143,11 @@ function start() {
     drawAll();
 }
 
-function increaseSize() {
+function increaseTileSize() {
 	setTileSize(rrTileSize + 1);
 }
 
-function decreaseSize() {
+function decreaseTileSize() {
 	if (rrTileSize > 1) {
 		setTileSize(rrTileSize - 1);
 	}
