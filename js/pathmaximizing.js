@@ -585,8 +585,8 @@ function drawAll() {
     if (globalBest == null) {
         document.getElementById("globalbestscore").innerHTML = "Global best score: None yet.<br>If you think you did well, feel free to send your obstacles map to the game creator to get your score displayed here for everyone.";
     } else {
-        if (globalBest.score >= personalBest) {
-            document.getElementById("globalbestscore").innerHTML = `Global best score: ${globalBest.score} - ${(globalBest.score/mapSize/mapSize*100).toFixed(2)}% (first obtained by ${globalBest.name})`;
+        if (globalBest.map.personalBest >= personalBest) {
+            document.getElementById("globalbestscore").innerHTML = `Global best score: ${globalBest.map.personalBest} - ${(globalBest.map.personalBest/mapSize/mapSize*100).toFixed(2)}% (first obtained by ${globalBest.name})`;
         } else {
             document.getElementById("globalbestscore").innerHTML = `Global best score: ${personalBest} - ${(personalBest/mapSize/mapSize*100).toFixed(2)}% (first obtained by YOU!)<br>Send your savefile to the game creator to get your score displayed here for everyone.`
         }
