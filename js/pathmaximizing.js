@@ -131,6 +131,7 @@ function start() {
         document.getElementById("loadglobalbest").disabled = false;
     }
     loadGameState();
+
     mapSize = Number(document.getElementById("mapsize").value);
 	let canvas = document.getElementById("canvas")
 	canvas.onmousedown = onMouseDown;
@@ -414,6 +415,9 @@ function saveMapSize() {
 
 function loadMapSize() {
     mapSize = Number(localStorage.getItem("mapSize")) ?? 7;
+    if (mapSize == 0) {
+        mapSize = 7;
+    }
     document.getElementById("mapsize").value = mapSize;
 }
 
