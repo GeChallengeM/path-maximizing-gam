@@ -167,12 +167,12 @@ function loadGlobalBest() {
     if (personalBest < BEST_KNOWN_SCORES[`level${mapSize}`].map.personalBest) {
         response = confirm("Are you sure you want to see the global best score? It may be more fun finding it yourself.")
         if (response) {
-            currentMap = BEST_KNOWN_SCORES[`level${mapSize}`].map.currentMap;
+            currentMap = JSON.parse(JSON.stringify(BEST_KNOWN_SCORES[`level${mapSize}`].map.currentMap));
             calcPath();
             drawAll();
         }
     } else if (personalBest == BEST_KNOWN_SCORES[`level${mapSize}`].map.personalBest) {
-        currentMap = BEST_KNOWN_SCORES[`level${mapSize}`].map.currentMap;
+        currentMap = JSON.parse(JSON.stringify(BEST_KNOWN_SCORES[`level${mapSize}`].map.currentMap));
         calcPath();
         drawAll();
     } else {
