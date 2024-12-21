@@ -783,16 +783,16 @@ function rrSouthwestwardsLine(x, y) {
     rDrawAntidiagonalLine(Math.round((x - 0.5) * rrTileSize), Math.round((y - 0.5) * rrTileSize), rrTileSize)
 }
 function rrSWCircleSector(x, y) {
-    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 1, 3)
+    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 1, rrTileSize > 20 ? 3 : 2)
 }
 function rrSECircleSector(x, y) {
-    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 2, 3)
+    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 2, rrTileSize > 20 ? 3 : 2)
 }
 function rrNECircleSector(x, y) {
-    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 3, 3)
+    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 3, rrTileSize > 20 ? 3 : 2)
 }
 function rrNWCircleSector(x, y) {
-    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 4, 3)
+    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 4, rrTileSize > 20 ? 3 : 2)
 }
 function rrSouthLineBig(x, y, length) {
 	rDrawHorizontalLine(x*rrTileSize, y*rrTileSize, rrTileSize*length);
