@@ -85,7 +85,8 @@ const BEST_KNOWN_SCORES = {
     },
     level19: {
         name: "Gech",
-        map: {"currentMap":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,4,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,32,16,64,8,128,0,0,0,0,8,130,2,32,0,0,0,0,8,128,0,8,130,10,136,128,0,0,8,128,32,32,0,8,128,0,0,0,8,128,0,32,32,8,130,4,1,8,128,0,0,2,4,1,0,0,0,10,128,0,0,0,2,34,20,65,10,128,0,8,160,16,64,0,0,0,32,2,2,2,0,40,162,16,74,160,0,0,8,130,2,0,0,0,0,0,32,32,40,130,0,40,138,160,0,10,128,2,34,32,0,0,0,0,0,0,4,5,41,130,0,32,0,10,168,136,160,32,0,0,0,0,0,0,0,16,80,64,42,128,0,8,162,4,5,1,0,0,0,0,0,0,0,2,10,136,138,160,0,2,0,40,146,80,64,0,0,0,0,0,0,2,34,32,8,160,0,10,168,130,0,40,130,2,2,0,0,0,0,0,32,40,128,0,0,10,164,1,42,130,0,32,32,32,2,0,0,0,4,1,10,128,0,8,160,20,65,34,32,0,0,0,8,160,0,0,0,16,64,32,0,0,8,128,16,64,40,128,2,2,0,8,128,0,0,0,8,128,0,2,2,8,128,0,0,8,136,160,40,128,0,8,128,0,0,0,0,2,32,40,128,0,0,0,0,8,128,4,1,2,0,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,16,64,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"personalBest":168}
+        extraNames: ["not_gech"],
+        map: {"currentMap":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,4,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,32,16,64,8,128,0,0,0,0,8,130,2,32,0,0,0,0,8,128,0,8,130,10,136,128,0,0,8,128,32,32,0,8,128,0,0,0,8,128,0,32,32,8,130,4,1,8,128,0,0,2,4,1,0,0,0,10,128,0,0,0,2,34,20,65,8,128,0,8,160,16,64,0,0,0,32,2,2,2,2,40,162,16,64,10,128,0,8,130,2,0,0,0,0,0,32,32,32,40,130,40,130,10,160,10,128,2,34,32,0,0,0,0,0,0,4,5,1,40,128,32,32,10,168,136,160,32,0,0,0,0,0,0,0,16,80,64,10,128,0,8,160,4,5,1,0,0,0,0,0,0,0,2,10,136,138,160,2,2,8,130,16,80,64,0,0,0,0,0,0,2,34,32,8,160,10,160,40,130,40,130,2,2,2,0,0,0,0,0,32,40,128,0,8,160,4,1,42,130,32,32,32,32,2,0,0,0,4,1,10,128,0,8,128,20,65,34,32,0,0,0,8,160,0,0,0,16,64,32,0,0,8,128,16,64,40,128,2,2,0,8,128,0,0,0,8,128,0,2,2,8,128,0,0,8,136,160,40,128,0,8,128,0,0,0,0,2,32,40,128,0,0,0,0,8,128,4,1,2,0,0,0,0,0,0,32,0,0,0,0,0,0,0,0,0,16,64,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"personalBest":176}
     },
     level20: {
         name: "Gech",
@@ -609,7 +610,20 @@ function drawAll() {
         document.getElementById("globalbestscore").innerHTML = "Global best score: None yet.<br>If you think you did well, feel free to send your obstacles map to the game creator to get your score displayed here for everyone.";
     } else {
         if (globalBest.map.personalBest >= personalBest) {
-            document.getElementById("globalbestscore").innerHTML = `Global best score: ${globalBest.map.personalBest} - ${(globalBest.map.personalBest/mapSize/mapSize*100).toFixed(2)}% (first obtained by ${globalBest.name})`;
+            let contributions = "";
+            if (globalBest.extraNames != null) {
+                contributions = ", with help of "
+                for (i = 0; i < globalBest.extraNames.length - 2; i++) {
+                    contributions += globalBest.extraNames[i];
+                    contributions += ", "
+                }
+                if (globalBest.extraNames.length > 1) {
+                    contributions += globalBest.extraNames[i];
+                    contributions += " and "
+                }
+                contributions += globalBest.extraNames[globalBest.extraNames.length - 1]
+            }
+            document.getElementById("globalbestscore").innerHTML = `Global best score: ${globalBest.map.personalBest} - ${(globalBest.map.personalBest/mapSize/mapSize*100).toFixed(2)}% (first obtained by ${globalBest.name}${contributions})`;
         } else {
             document.getElementById("globalbestscore").innerHTML = `Global best score: ${personalBest} - ${(personalBest/mapSize/mapSize*100).toFixed(2)}% (first obtained by YOU!)<br>Send your savefile to the game creator to get your score displayed here for everyone.`
         }
