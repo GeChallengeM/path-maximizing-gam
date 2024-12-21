@@ -21,7 +21,7 @@ const BEST_KNOWN_SCORES = {
     },
     level3: {
         name: "Gech",
-        map: {"currentMap":{"currentMap":[0,0,0,0,0,0,0,0,0],"personalBest":8},"personalBest":8}
+        map: {"currentMap":[0,0,0,0,0,0,0,0,0],"personalBest":8}
     },
     level4: {
         name: "Gech",
@@ -175,7 +175,6 @@ function loadGlobalBest() {
         currentMap = BEST_KNOWN_SCORES[`level${mapSize}`].map.currentMap;
         calcPath();
         drawAll();
-        console.log(currentMap);
     } else {
         loadPersonalBest();
     }
