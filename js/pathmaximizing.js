@@ -786,16 +786,16 @@ function rrSouthwestwardsLine(x, y) {
     rDrawAntidiagonalLine(Math.round((x - 0.5) * rrTileSize), Math.round((y - 0.5) * rrTileSize), rrTileSize)
 }
 function rrSWCircleSector(x, y) {
-    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 1, rrTileSize > 20 ? 3 : 2)
+    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 1, rrTileSize > 20 ? 3 : (rrTileSize > 7 ? 2 : 1))
 }
 function rrSECircleSector(x, y) {
-    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 2, rrTileSize > 20 ? 3 : 2)
+    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 2, rrTileSize > 20 ? 3 : (rrTileSize > 7 ? 2 : 1))
 }
 function rrNECircleSector(x, y) {
-    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 3, rrTileSize > 20 ? 3 : 2)
+    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 3, rrTileSize > 20 ? 3 : (rrTileSize > 7 ? 2 : 1))
 }
 function rrNWCircleSector(x, y) {
-    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 4, rrTileSize > 20 ? 3 : 2)
+    rDrawCircleSector(x*rrTileSize, y*rrTileSize, 4, rrTileSize > 20 ? 3 : (rrTileSize > 7 ? 2 : 1))
 }
 function rrSouthLineBig(x, y, length) {
 	rDrawHorizontalLine(x*rrTileSize, y*rrTileSize, rrTileSize*length);
