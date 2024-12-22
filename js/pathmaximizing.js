@@ -206,6 +206,7 @@ function importGameState() {
                     document.getElementById("loadglobalbest").disabled = false;
                 }
                 saveMapSize();
+                loadPersonalBest();
                 saveGameState();
                 calcPath();
                 setTileSize(Math.round(rrTileSize*oldMapSize/mapSize));
